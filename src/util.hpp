@@ -26,6 +26,12 @@ typedef std::pair<int, std::array<int, URNSIZE>> URN;
  * 6. Simulate the draws fom the urn 
 **/
 
+
+std::ostream& operator<<(std::ostream &strm, const URN &urn);
+
+std::ostream& operator<<(std::ostream &strm, const DRAWN_URN &drawn_urn);
+
+
 class urn_sampler{
   
 public:
@@ -38,6 +44,8 @@ private:
   std::string file_name{"test_result.csv"};
   
   std::ofstream test_file_strm;
+
+  int draw_num{20};
   
   rand_gen gen;
   
@@ -49,15 +57,10 @@ private:
 
   void get_one_cases(int colors);
 
+  void sample_many_draws(URN &urn, int draws);
+
 
   
-}
-
-std::ostream& operator<<(std::ostream &strm, const URN &urn);
-
-std::ostream& operator<<(std::ostream &strm, const DRAWN_URN &drawn_urn);
-
-
-
+};
 
 #endif

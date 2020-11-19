@@ -37,7 +37,13 @@ void urn_sampler::random_draws(URN &urn, int draws)
     
     DRAWN_URN drawn_urn{urn.first, draw_bag};
     
-    test_file_strm << urn.first << "," << draw_bag.size()  << drawn_urn << std::endl;
+    test_file_strm << urn.first << "," << draw_bag.size() << ","  << drawn_urn << std::endl;
+}
+
+
+void urn_sampler::sample_many_draws(URN &urn, int draws){
+    for(int i  = 0; i <= 1000; i++)
+        random_draws(urn,draws);
 }
 
 void urn_sampler::get_one_cases(int colors)
@@ -46,8 +52,9 @@ void urn_sampler::get_one_cases(int colors)
 
     for(auto it = urn.begin(); it != urn.end(); it++)
         *it = gen.get_next(1,colors);
+    URN urn_container  = URN{colors,urn};
 
-    random_draws(urn, draws)
+    sample_many_draws(urn_container, draw_num);
 }
 
 void urn_sampler::get_single_cases(int num_cases, int colors)
