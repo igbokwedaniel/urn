@@ -39,7 +39,7 @@ private:
   
   std::ofstream test_file_strm;
   
-  rand_gen rand_generator;
+  rand_gen gen;
   
   void random_draws(URN &urn, int draws);
 
