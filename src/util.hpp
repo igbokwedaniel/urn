@@ -24,19 +24,34 @@ typedef std::pair<int, std::array<int, URNSIZE>> URN;
  * 6. Simulate the draws fom the urn 
 **/
 
-DRAWN_URN random_draws(URN &urn, int draws, rand_gen &gen);
+class urn_sampler{
+  
+public:
+  void get_all_draws(int per_cases, int min_color, int max_color);
+  urn_sampler();
+  
+  
+private:
+  
+  std::string file_name{"test_result.csv"};
+  
+  void random_draws(URN &urn, int draws);
 
-std::vector<URN> get_all_cases(int per_cases, int min_color, int max_color, rand_gen &gen);
+  void get_all_cases(int per_cases, int min_color, int max_color);
 
-std::vector<URN> get_single_cases(int num_cases, int colors , rand_gen &gen);
+  void get_single_cases(int num_cases, int colors);
 
-URN get_one_cases(int colors , rand_gen &gen);
+  void get_one_cases(int colors);
+
+
+  
+}
 
 std::ostream& operator<<(std::ostream &strm, const URN &urn);
 
 std::ostream& operator<<(std::ostream &strm, const DRAWN_URN &drawn_urn);
 
-std::vector<DRAWN_URN> get_all_draws(std::vector<URN> &cases, rand_gen &gen, int samples);
+
 
 
 #endif
