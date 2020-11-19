@@ -39,6 +39,8 @@ private:
   
   std::ofstream test_file_strm;
   
+  rand_gen rand_generator;
+  
   void random_draws(URN &urn, int draws);
 
   void get_all_cases(int per_cases, int min_color, int max_color);
