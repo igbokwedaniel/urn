@@ -1,5 +1,7 @@
 #include<utility>
 #include<map>
+#include<string>
+#include<fstream>
 #include<algorithm>
 #include<vector>
 #include "rand.hpp"
@@ -34,6 +36,8 @@ public:
 private:
   
   std::string file_name{"test_result.csv"};
+  
+  std::ofstream test_file_strm;
   
   void random_draws(URN &urn, int draws);
 
